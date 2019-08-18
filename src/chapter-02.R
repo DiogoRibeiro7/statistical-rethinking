@@ -31,15 +31,14 @@ globe.qa <- map(
 )
 
 print(precis(globe.qa))
-mean <- attr(globe.qa, "coef")
-stdev <- sqrt(attr(globe.qa, "vcov"))
-
-# Analytical calculation: Beta-Binomial conjugate model
+mu <- attr(globe.qa, "coef")
+sigma <- sqrt(attr(globe.qa, "vcov"))
 
 pdf("output/chapter-02.output-02.pdf")
+# Analytical calculation: Beta-Binomial conjugate model
 curve(dbeta(x, w+1, n-w+1), from=0, to=1,
       xlab="Probability of water", ylab="Posterior or Approximation")
-curve(dnorm(x, mean, stdev), lty=2, add=TRUE)
+curve(dnorm(x, mu, sigma), lty=2, add=TRUE)
 mtext("(Beta) Posterior and (Normal) Quadratic Approximation")
 legend(0.02, 2.7, legend=c("Posterior", "Quadratic Approximation"), lty=1:2)
 dev.off()
