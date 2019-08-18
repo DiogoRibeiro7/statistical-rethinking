@@ -1,1 +1,1 @@
-# statistical-rethinking
+# Worked Examples for _Statistical Rethinking_
